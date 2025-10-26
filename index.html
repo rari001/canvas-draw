@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./css/style.css" rel="stylesheet" />
     <title>お絵描きしてみよう！</title>
     <style>
       .title {
@@ -19,14 +18,45 @@
         max-width: 600px;
         margin: 10px auto;
       }
+
+      .btn {
+        background: #5cbce2;
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .star {
+        color: #5cbce2;
+      }
+      .input {
+        display: block;
+        border: 2px solid #5cbce2;
+        border-radius: 5px;
+      }
+      .flex-wrapper {
+        display: flex;
+        gap: 5px;
+        height: auto;
+        align-items: center;
+      }
+      .canvas {
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
     <div class="inner">
-      <h1 class="title">★お絵描きしてみよう★</h1>
-      <input type="color" id="colorPicker" value="#000000" />
-      <button id="downloadBtn">画像をダウンロード</button>
-      <button id="clearBtn">クリア</button>
+      <h1 class="title">
+        <span class="star">★</span>お絵描きしてみよう<span class="star">★</span>
+      </h1>
+      <div class="flex-wrapper">
+        <input class="input" type="color" id="colorPicker" value="#000000" />
+        <button class="btn" id="downloadBtn">画像をダウンロード</button>
+        <button class="btn" id="clearBtn">クリア</button>
+      </div>
       <canvas id="canvas" width="600" height="500" class="canvas"></canvas>
     </div>
 
@@ -39,6 +69,7 @@
 
       let drawing = false;
       let currentColor = colorPicker.value;
+      ctx.lineCap = "round";
 
       colorPicker.addEventListener("input", (e) => {
         currentColor = e.target.value;
